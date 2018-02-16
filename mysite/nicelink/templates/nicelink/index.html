@@ -1,0 +1,28 @@
+{% extends 'nicelink/base.html' %}
+
+
+
+{% block head %}
+<center><h3>Home Page</h3></center>
+{% endblock %}
+
+
+{% block content %}
+<form action="{% url 'nicelink:index' %}" method="post">
+    {% csrf_token %}
+    {{ form }}
+    <br>
+    Your nice link: {{ link.nice_link_text }}
+    <br>
+    <input type="submit" value="Submit" />
+
+</form>
+{% endblock %}
+
+{% block sidebar %}
+<a type="button" href="{% url 'nicelink:link_list' %}"
+                            class="btn btn-primary btn-lg btn-block">Link List</a>
+<a type="button" href="{% url 'nicelink:register_view' %}"
+                            class="btn btn-primary btn-lg btn-block">User Register</a>
+
+{% endblock %}

@@ -1,0 +1,30 @@
+{% extends 'nicelink/base.html' %}
+
+
+
+{% block head %}
+<center><h3>Link List</h3></center>
+{% endblock %}
+
+
+{% block sidebar %}
+<a type="button" href="{% url 'nicelink:index' %}"
+                            class="btn btn-primary btn-lg btn-block">Main Page</a>
+
+{% endblock %}
+
+
+{% block content %}
+
+
+<ul>
+    {% for link in links %}
+    <li>
+        {{ link.oryginal_link_text }}
+        - as -
+        <a href="{% url 'nicelink:redirect_to_oryginal_link' link.oryginal_link_text %}" target="_blank">{{ link.nice_link_text }}</a>
+        <hr>
+    </li>
+    {% endfor %}
+</ul>
+{% endblock %}
